@@ -1,5 +1,5 @@
 part_one:
-	python3 part_one.py
+	python3 -c "from challenges import part_one; result = part_one(); print(result)"
 
 test:
-	python3 -m unittest test_2022.py
+	python3 -m unittest
