@@ -5,14 +5,14 @@ from day_one_helpers import sum_groups, extract_groups_int
 from day_two_helpers import convert_move, convert_moves, calc_move_score, calc_game_score, convert_win_lose_key, calc_player_move
 
 def day_one_part_one():
-    input = read_input('day_one_input.txt')
+    input = read_input('../day_one_input.txt')
     groups_int = extract_groups_int(input)
     groups_sum = sum_groups(groups_int)
 
     return max(groups_sum)
 
 def day_one_part_two():
-    input = read_input('day_one_input.txt')
+    input = read_input('../day_one_input.txt')
     groups_int = extract_groups_int(input)
     groups_sum = sum_groups(groups_int)
     groups_sorted = sorted(groups_sum)
@@ -22,7 +22,7 @@ def day_one_part_two():
 
 
 def day_two_part_one():
-    input = read_input('day_two_input.txt')
+    input = read_input('../day_two_input.txt')
     rounds = [round.split(' ') for round in input.split('\n')]
     rounds = [convert_moves(round) for round in rounds]
 
@@ -33,7 +33,7 @@ def day_two_part_one():
     return total_score
 
 def day_two_part_two():
-    input = read_input('day_two_input.txt')
+    input = read_input('../day_two_input.txt')
     rounds = [round.split(' ') for round in input.split('\n')]
     rounds = [[convert_move(round[0]), round[1]] for round in rounds]
 
