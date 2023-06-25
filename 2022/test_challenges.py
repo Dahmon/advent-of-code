@@ -1,34 +1,35 @@
 from unittest.mock import patch
 import unittest
-from challenges import part_one, part_two
+from challenges import day_one_part_one, day_one_part_two
 
-mock_input = """10
-20
-30
 
-5
-15
-20
+class TestDayOne(unittest.TestCase):
+    mock_input = """10
+    20
+    30
 
-30
-50
-20
+    5
+    15
+    20
 
-10
-50
+    30
+    50
+    20
 
-60
-10
-10"""
+    10
+    50
 
-class TestChallenges(unittest.TestCase):
+    60
+    10
+    10"""
+
     @patch('challenges.read_input')
     def test_part_one(self, mock_read_input):
         # ARRANGE
-        mock_read_input.return_value = mock_input
+        mock_read_input.return_value = self.mock_input
 
         # ACT
-        result = part_one()
+        result = day_one_part_one()
 
         # ASSERT
         self.assertEqual(result, 100)
@@ -36,13 +37,17 @@ class TestChallenges(unittest.TestCase):
     @patch('challenges.read_input')
     def test_part_two(self, mock_read_input):
         # ARRANGE
-        mock_read_input.return_value = mock_input
+        mock_read_input.return_value = self.mock_input
 
         # ACT
-        result = part_two()
+        result = day_one_part_two()
 
         # ASSERT
         self.assertEqual(result, 240)
+
+
+class TestDayTwo(unittest.TestCase):
+    pass
 
 if __name__ == '__main__':
     unittest.main()
