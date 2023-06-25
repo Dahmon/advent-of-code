@@ -1,6 +1,6 @@
 from unittest.mock import patch
 import unittest
-from challenges import day_one_part_one, day_one_part_two
+from challenges import day_one_part_one, day_one_part_two, day_two_part_one
 
 
 class TestDayOne(unittest.TestCase):
@@ -47,7 +47,18 @@ class TestDayOne(unittest.TestCase):
 
 
 class TestDayTwo(unittest.TestCase):
-    pass
+    mock_input = """A Y\nB X\nC Z"""
+
+    @patch('challenges.read_input')
+    def test_part_one(self, mock_read_input):
+        # ARRANGE
+        mock_read_input.return_value = self.mock_input
+
+        # ACT
+        result = day_two_part_one()
+
+        # ASSERT
+        self.assertEqual(result, 15)
 
 if __name__ == '__main__':
     unittest.main()
