@@ -1,7 +1,7 @@
 import unittest
 
 from day_one_helpers import extract_groups_int, sum_groups
-from day_two_helpers import calc_rock_paper_scissors, convert_moves, calc_move_score, calc_game_score
+from day_two_helpers import calc_rock_paper_scissors, convert_move, convert_moves, calc_move_score, calc_game_score, convert_win_lose_key, calc_player_move
 
 class TestDayOneHelpers(unittest.TestCase):
     def test_extract_groups_int(self):
@@ -57,24 +57,35 @@ class TestDayTwoHelpers(unittest.TestCase):
             # ASSERT
             self.assertEqual(result, expected)
 
-    def test_convert_moves(self):
-        convert_moves_tests = [
-            [['A', 'A'], ['R', 'R']],
-            [['B', 'B'], ['P', 'P']],
-            [['C', 'C'], ['S', 'S']],
-            [['X', 'X'], ['R', 'R']],
-            [['Y', 'Y'], ['P', 'P']],
-            [['Z', 'Z'], ['S', 'S']],
+    def test_convert_move(self):
+        convert_move_tests = [
+            ['A', 'R'],
+            ['B', 'P'],
+            ['C', 'S'],
+            ['X', 'R'],
+            ['Y', 'P'],
+            ['Z', 'S'],
         ]
 
-        for round, expected in convert_moves_tests:
+        for move, expected in convert_move_tests:
             # ARRANGE
 
             # ACT
-            result = convert_moves(round)
+            result = convert_move(move)
 
             # ASSERT
             self.assertEqual(result, expected)
+
+    def test_convert_moves(self):
+        # ARRANGE
+        round = ['A', 'B']
+        expected = ['R', 'P']
+
+        # ACT
+        result = convert_moves(round)
+
+        # ASSERT
+        self.assertEqual(result, expected)
 
     def test_calc_move_score(self):
         calc_move_score_tests = [
@@ -110,6 +121,46 @@ class TestDayTwoHelpers(unittest.TestCase):
 
             # ACT
             result = calc_game_score(round)
+
+            # ASSERT
+            self.assertEqual(result, expected)
+
+    def test_convert_win_lose_key(self):
+        convert_win_lose_key_tests = [
+            [['R', 'X'], ['R', 'lose']],
+            [['P', 'Y'], ['P', 'draw']],
+            [['S', 'Z'], ['S', 'win']],
+        ]
+
+        for round, expected in convert_win_lose_key_tests:
+            # ARRANGE
+
+            # ACT
+            result = convert_win_lose_key(round)
+
+            # ASSERT
+            self.assertEqual(result, expected)
+
+    def test_calc_player_move(self):
+        calc_player_move_tests = [
+            [['R', 'lose'], ['R', 'S']],
+            [['R', 'draw'], ['R', 'R']],
+            [['R', 'win'], ['R', 'P']],
+
+            [['P', 'lose'], ['P', 'R']],
+            [['P', 'draw'], ['P', 'P']],
+            [['P', 'win'], ['P', 'S']],
+
+            [['S', 'lose'], ['S', 'P']],
+            [['S', 'draw'], ['S', 'S']],
+            [['S', 'win'], ['S', 'R']],
+        ]
+
+        for round, expected in calc_player_move_tests:
+            # ARRANGE
+
+            # ACT
+            result = calc_player_move(round)
 
             # ASSERT
             self.assertEqual(result, expected)
