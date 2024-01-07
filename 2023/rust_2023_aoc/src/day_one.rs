@@ -3,16 +3,8 @@ use std::error::Error;
 use std::fs::File;
 use std::io::{self, BufRead};
 
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn exploration() {
-        assert_eq!(2 + 2, 4);
-    }
-}
-
-fn part_one() -> Result<u32, regex::Error> {
-    let file = File::open("input.txt").unwrap();
+pub fn part_one() -> Result<u32, Box<dyn Error>> {
+    let file = File::open("src/input/day_one_input.txt").unwrap();
     let lines = io::BufReader::new(file).lines();
 
     let first_re = Regex::new(r"^[a-z]*(\d)")?;
@@ -52,8 +44,8 @@ fn part_one() -> Result<u32, regex::Error> {
     Ok(total)
 }
 
-fn part_two() -> Result<u32, Box<dyn Error>> {
-    let file = File::open("input.txt").unwrap();
+pub fn part_two() -> Result<u32, Box<dyn Error>> {
+    let file = File::open("src/input/day_one_input.txt").unwrap();
     let lines = io::BufReader::new(file).lines();
 
     let str_nums: [&str; 10] = [
@@ -94,18 +86,4 @@ fn part_two() -> Result<u32, Box<dyn Error>> {
     }
 
     Ok(total)
-}
-
-fn main() {
-    let part_one_result = part_one();
-    match part_one_result {
-        Ok(result) => println!("Part One Result: {}", result),
-        Err(error) => println!("Part One Error: {}", error),
-    }
-
-    let part_two_result = part_two();
-    match part_two_result {
-        Ok(result) => println!("Part Two Result: {}", result),
-        Err(error) => println!("Part Two Error: {}", error),
-    }
 }

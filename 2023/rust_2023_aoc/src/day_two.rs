@@ -74,7 +74,7 @@ impl Game {
 }
 
 pub fn part_one() -> Result<u32, Box<dyn Error>> {
-    let file = File::open("src/day_two_input.txt").unwrap();
+    let file = File::open("src/input/day_two_input.txt").unwrap();
     let lines = BufReader::new(file).lines();
 
     let mut id_sum: u32 = 0;
@@ -105,7 +105,7 @@ pub fn part_one() -> Result<u32, Box<dyn Error>> {
 }
 
 pub fn part_two() -> Result<u32, Box<dyn Error>> {
-    let file = File::open("src/day_two_input.txt").unwrap();
+    let file = File::open("src/input/day_two_input.txt").unwrap();
     let lines = BufReader::new(file).lines();
 
     let mut power_sum: u32 = 0;
