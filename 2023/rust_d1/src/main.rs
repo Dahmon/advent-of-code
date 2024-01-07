@@ -1,8 +1,7 @@
 use regex::Regex;
-use std::borrow::Borrow;
 use std::error::Error;
 use std::fs::File;
-use std::io::{self, BufRead, BufReader, Lines};
+use std::io::{self, BufRead};
 
 #[cfg(test)]
 mod tests {
