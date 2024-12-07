@@ -6,6 +6,8 @@ use std::{
 
 use regex::Regex;
 
+use crate::ChallengeResult;
+
 #[derive(Debug)]
 struct Score {
     red: u32,
@@ -73,7 +75,7 @@ impl Game {
     }
 }
 
-pub fn part_one() -> Result<u32, Box<dyn Error>> {
+pub fn part_one() -> ChallengeResult {
     let file = File::open("src/input/day_two_input.txt").unwrap();
     let lines = BufReader::new(file).lines();
 
@@ -104,7 +106,7 @@ pub fn part_one() -> Result<u32, Box<dyn Error>> {
     Ok(id_sum)
 }
 
-pub fn part_two() -> Result<u32, Box<dyn Error>> {
+pub fn part_two() -> ChallengeResult {
     let file = File::open("src/input/day_two_input.txt").unwrap();
     let lines = BufReader::new(file).lines();
 

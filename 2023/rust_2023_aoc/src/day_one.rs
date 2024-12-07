@@ -1,9 +1,10 @@
 use regex::Regex;
-use std::error::Error;
 use std::fs::File;
 use std::io::{self, BufRead};
 
-pub fn part_one() -> Result<u32, Box<dyn Error>> {
+use crate::ChallengeResult;
+
+pub fn part_one() -> ChallengeResult {
     let file = File::open("src/input/day_one_input.txt").unwrap();
     let lines = io::BufReader::new(file).lines();
 
@@ -44,7 +45,7 @@ pub fn part_one() -> Result<u32, Box<dyn Error>> {
     Ok(total)
 }
 
-pub fn part_two() -> Result<u32, Box<dyn Error>> {
+pub fn part_two() -> ChallengeResult {
     let file = File::open("src/input/day_one_input.txt").unwrap();
     let lines = io::BufReader::new(file).lines();
 
